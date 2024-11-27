@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">CalculatorApp</string>
+    <!-- Labels -->
+    <string name="calculator">Calculadora</string>
+    <string name="number1">Numero 1</string>
+    <string name="number2">Numero 2</string>
+    <string name="total">Resultado</string>
+    <!-- Operations -->
+    <string name="add">Sumar</string>
+    <string name="subtraction">Restar</string>
+    <string name="multiply">Multiplicar</string>
+    <string name="divide">Dividir</string>
+    <!--Buttons -->
+    <string name="calculate">Calcular</string>
+    <string name="delete">Borrar</string>
+    <string name="save">Guardar</string>
+    <string name="show">Mostrar</string>
+    <!--Error messages -->
+    <string name="errorDivByZero">
+        Error: No se puede dividir por cero.
+    </string>
 </resources>
