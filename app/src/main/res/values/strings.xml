@@ -5,18 +5,30 @@
     <string name="number1">Numero 1</string>
     <string name="number2">Numero 2</string>
     <string name="total">Resultado</string>
+    <string name="valueZero">0</string>
     <!-- Operations -->
     <string name="add">Sumar</string>
     <string name="subtraction">Restar</string>
     <string name="multiply">Multiplicar</string>
     <string name="divide">Dividir</string>
+    <!--Operators-->
+    <string name="operatorAdd">+</string>
+    <string name="operatorSubtract">−</string>
+    <string name="operatorMultiply">×</string>
+    <string name="operatorDivide">÷</string>
     <!--Buttons -->
     <string name="calculate">Calcular</string>
     <string name="delete">Borrar</string>
     <string name="save">Guardar</string>
     <string name="show">Mostrar</string>
-    <!--Error messages -->
-    <string name="errorDivByZero">
-        Error: No se puede dividir por cero.
-    </string>
+    <!--Messages error -->
+    <string name="errorDivByZero">Aviso: No se puede dividir por cero.</string>
+    <string name="errorEmptyField">Aviso: Algún campo esta vacío.</string>
+    <string name="errorInvalidNumber">Porfavor ingrese un número válido.</string>
+    <string name="errorSave">Error al guardar</string>
+    <string name="errorNoOperationSelected">Aviso: Debe elegir una operación para continuar.</string>
+    <!--Message notify-->
+    <string name="saveSuccess">Guardado en la base de datos.</string>
+    <string name="noResultsSave">No hay resultados guardados.</string>
+    <string name="lastResultIs">El ultimo resultado es: </string>
 </resources>

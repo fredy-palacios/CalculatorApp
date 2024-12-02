@@ -1,7 +1,6 @@
 package com.fredypalacios.calculatorapp;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         Button bShow = findViewById(R.id.bShow);
 
         DBCalculator dbCalculator = new DBCalculator(this);
-
-
+        rbAdd.setChecked(true);
+        tvOperation.setText(getString(R.string.operatorAdd));
 
         rbAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvOperation.setText("+");
+                tvOperation.setText(getString(R.string.operatorAdd));
                 rbAdd.setChecked(true);
             }
         });
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         rbSubtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvOperation.setText("―");
+                tvOperation.setText(getString(R.string.operatorSubtract));
                 rbSubtract.setChecked(true);
             }
         });
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         rbMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvOperation.setText("*");
+                tvOperation.setText(getString(R.string.operatorMultiply));
                 rbMultiply.setChecked(true);
             }
         });
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         rbDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvOperation.setText("/");
+                tvOperation.setText(getString(R.string.operatorDivide));
                 rbDivide.setChecked(true);
             }
         });
@@ -104,16 +103,16 @@ public class MainActivity extends AppCompatActivity {
                                 int result = etNum1 / etNum2;
                                 tvResult.setText(String.valueOf(result));
                             } catch (ArithmeticException e) {
-                                Toast.makeText(v.getContext(), "Aviso: No se puede dividir por cero",
+                                Toast.makeText(v.getContext(), getString(R.string.errorDivByZero),
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
                     } catch (NumberFormatException e) {
-                        Toast.makeText(MainActivity.this, "Porfavor ingrese un número válido",
+                        Toast.makeText(MainActivity.this, getString(R.string.errorInvalidNumber),
                                 Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Aviso: Algún campo esta vacío",
+                    Toast.makeText(MainActivity.this,getString(R.string.errorEmptyField),
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -135,15 +134,15 @@ public class MainActivity extends AppCompatActivity {
                 if (!result.isEmpty()) {
                     try {
                         dbCalculator.insertResult(result);
-                        Toast.makeText(MainActivity.this, "Guardado en la base de datos",
+                        Toast.makeText(MainActivity.this, getString(R.string.saveSuccess),
                                 Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(MainActivity.this, "Error al guardar",
+                        Toast.makeText(MainActivity.this, getString(R.string.errorSave),
                                 Toast.LENGTH_SHORT).show();
                         throw new RuntimeException(e);
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Algún campo esta vacío",
+                    Toast.makeText(MainActivity.this, getString(R.string.errorEmptyField),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -156,10 +155,10 @@ public class MainActivity extends AppCompatActivity {
                 if (lastResult != null) {
                     Toast.makeText(
                             MainActivity.this,
-                            "El ultimo resultado es: " + dbCalculator.getLastResult(),
+                            getString(R.string.lastResultIs)+ " " + lastResult,
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this,"No hay resultados guardados",
+                    Toast.makeText(MainActivity.this,getString(R.string.noResultsSave),
                             Toast.LENGTH_SHORT).show();
                 }
             }
