@@ -1,6 +1,7 @@
 package com.fredypalacios.calculatorapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         Button bDelete = findViewById(R.id.bDelete);
         Button bSave = findViewById(R.id.bSave);
         Button bShow = findViewById(R.id.bShow);
+
+        DBCalculator dbCalculator = new DBCalculator(this);
+
+
 
         rbAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,17 +95,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if (rbAdd.isChecked()) {
                             tvResult.setText(String.valueOf(etNum1 + etNum2));
-                        }
-
-                        if (rbSubtract.isChecked()) {
+                        } else if (rbSubtract.isChecked()) {
                             tvResult.setText(String.valueOf(etNum1 - etNum2));
-                        }
-
-                        if (rbMultiply.isChecked()) {
+                        } else if (rbMultiply.isChecked()) {
                             tvResult.setText(String.valueOf(etNum1 * etNum2));
-                        }
-
-                        if (rbDivide.isChecked()) {
+                        } else if (rbDivide.isChecked()) {
                             try {
                                 int result = etNum1 / etNum2;
                                 tvResult.setText(String.valueOf(result));
@@ -109,13 +108,12 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
-
                     } catch (NumberFormatException e) {
                         Toast.makeText(MainActivity.this, "Porfavor ingrese un número válido",
                                 Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Aviso: Un campo esta vacío",
+                    Toast.makeText(MainActivity.this, "Aviso: Algún campo esta vacío",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -126,7 +124,44 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 etNumber1.setText("");
                 etNumber2.setText("");
-                tvResult.setText("0");
+                tvResult.setText("");
+            }
+        });
+
+        bSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = tvResult.getText().toString();
+                if (!result.isEmpty()) {
+                    try {
+                        dbCalculator.insertResult(result);
+                        Toast.makeText(MainActivity.this, "Guardado en la base de datos",
+                                Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(MainActivity.this, "Error al guardar",
+                                Toast.LENGTH_SHORT).show();
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "Algún campo esta vacío",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        bShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String lastResult = dbCalculator.getLastResult();
+                if (lastResult != null) {
+                    Toast.makeText(
+                            MainActivity.this,
+                            "El ultimo resultado es: " + dbCalculator.getLastResult(),
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this,"No hay resultados guardados",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
