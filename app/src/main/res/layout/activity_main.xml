@@ -9,14 +9,16 @@
 
     <TextView
         android:id="@+id/tvAppTitle"
-        android:layout_width="121dp"
-        android:layout_height="27dp"
+        android:layout_width="168dp"
+        android:layout_height="37dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="60dp"
+        android:gravity="center"
         android:text="@string/calculator"
-        android:textSize="20sp"
+        android:textColor="@color/tomato"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etNumber1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +36,7 @@
         android:gravity="end"
         android:hint="@string/valueZero"
         android:inputType="number"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAppTitle" />
 
@@ -44,7 +47,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="30dp"
-        android:textSize="20sp"
+        android:textColor="@color/teal"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/etNumber2"
         app:layout_constraintStart_toEndOf="@+id/etNumber1"
@@ -61,6 +65,7 @@
         android:gravity="end"
         android:hint="@string/valueZero"
         android:inputType="number"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAppTitle" />
 
@@ -109,7 +114,8 @@
             android:id="@+id/rbAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add" />
+            android:text="@string/add"
+            android:textColorLink="@color/tomato" />
 
         <RadioButton
             android:id="@+id/rbSubtract"
@@ -136,6 +142,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="75dp"
+        android:backgroundTint="@color/teal"
         android:text="@string/calculate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rgOperations" />
@@ -146,6 +153,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="60dp"
+        android:backgroundTint="@color/teal"
         android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rgOperations" />
@@ -156,6 +164,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/teal"
         android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bCalculate" />
@@ -166,6 +175,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
+        android:backgroundTint="@color/teal"
         android:text="@string/show"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bDelete" />
@@ -190,7 +200,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="80dp"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/tomato"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
